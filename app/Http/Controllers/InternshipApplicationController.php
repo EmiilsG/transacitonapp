@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Internship;
+use App\Models\User;
 use App\Services\ApplyForInternshipService;
 use Illuminate\Http\Request;
 
@@ -10,6 +12,14 @@ class InternshipApplicationController extends Controller
     public function __construct(
         private readonly ApplyForInternshipService $applyForInternshipService
     ) {}
+
+    public function create()
+    {
+        $users = User::all();
+        $internships = Internship::all();
+
+        return view('apply', compact('users', 'internships'));
+    }
 
     public function store(Request $request)
     {

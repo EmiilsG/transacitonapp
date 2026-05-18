@@ -7,4 +7,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/apply', [InternshipApplicationController::class, 'create']);
 Route::post('/apply', [InternshipApplicationController::class, 'store']);
